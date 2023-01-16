@@ -7,13 +7,6 @@ import (
 	"github.com/MelihEmreGuler/login-register-app-with-golang/helpers"
 )
 
-func Run() {
-	http.HandleFunc("/", Index)
-	http.HandleFunc("/login", Login)
-	http.HandleFunc("/signup", Signup)
-	http.ListenAndServe(":8080", nil)
-}
-
 func Signup(w http.ResponseWriter, r *http.Request) {
 	uName, email, psw, pwdCnfrm := "", "", "", ""
 	r.ParseForm()
