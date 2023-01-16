@@ -1,9 +1,12 @@
 package main
 
 import (
-	"github.com/MelihEmreGuler/login-register-app-with-golang/handlers"
+	"net/http"
+
+	"github.com/MelihEmreGuler/login-register-app-with-golang/routes"
 )
 
 func main() {
-	handlers.Run()
+	routes.Routes()
+	http.ListenAndServe(":8080", nil)
 }
