@@ -16,9 +16,9 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	psw = r.FormValue("password")
 	pwdCnfrm = r.FormValue("confirm")
 
-	if CheckFormValues(uName, email, psw, pwdCnfrm, w) {
+	if CheckSignupFormValues(uName, email, psw, pwdCnfrm, w) {
 		fmt.Fprintf(w, "%s's Registration successful \n", uName)
-		ShowUserData(uName, email, psw, pwdCnfrm, w)
+		ShowSignedUpUserData(uName, email, psw, pwdCnfrm, w)
 	} else {
 		fmt.Fprintf(w, "Registration failed \n")
 		return
@@ -26,7 +26,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func CheckFormValues(uName, email, psw, pwdCnfrm string, w http.ResponseWriter) bool {
+func CheckSignupFormValues(uName, email, psw, pwdCnfrm string, w http.ResponseWriter) bool {
 	uNameCheck := helpers.IsEmpty(uName)
 	emailCheck := helpers.IsEmpty(email)
 	pswCheck := helpers.IsEmpty(psw)
@@ -43,7 +43,7 @@ func CheckFormValues(uName, email, psw, pwdCnfrm string, w http.ResponseWriter) 
 	return true
 }
 
-func ShowUserData(uName, email, psw, pwdCnfrm string, w http.ResponseWriter) {
+func ShowSignedUpUserData(uName, email, psw, pwdCnfrm string, w http.ResponseWriter) {
 
 	fmt.Fprintf(w, "Username: %s \n", uName)
 	fmt.Fprintf(w, "Email: %s \n", email)
